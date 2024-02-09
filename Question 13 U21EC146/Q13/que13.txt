@@ -1,0 +1,48 @@
+% Define the cutoff frequencies
+fc = [6, 16, 32, 90, 250];
+
+% Define the filter order for Butterworth filter
+order = 2;
+
+% Define the frequency range for plotting
+freq_range = 0:0.1:300;
+
+% Initialize figure
+figure;
+
+% Loop over each cutoff frequency
+for i = 1:length(fc)
+    % Ideal Filter
+    ideal_filter = (freq_range <= fc(i));
+    
+    % Butterworth Filter
+    butterworth_filter = 1 ./ (1 + (freq_range./fc(i)).^(2*order));
+    
+    % Gaussian Filter
+    gaussian_filter = exp(-(freq_range.^2) / (2 * fc(i)^2));
+    
+    % Plot Ideal Filter
+    subplot(3, length(fc), i);
+    plot(freq_range, ideal_filter);
+    title(['Ideal Filter - Cutoff: ', num2str(fc(i))]);
+    
+    % Plot Butterworth Filter
+    subplot(3, length(fc), i + length(fc));
+    plot(freq_range, butterworth_filter);
+    title(['Butterworth Filter - Cutoff: ', num2str(fc(i))]);
+    
+    % Plot Gaussian Filter
+    subplot(3, length(fc), i + 2*length(fc));
+    plot(freq_range, gaussian_filter);
+    title(['Gaussian Filter - Cutoff: ', num2str(fc(i))]);
+end
+
+% Adjust subplot layout
+sgtitle('Frequency Responses of Ideal, Butterworth, and Gaussian Filters');
+
+% Label axes
+for i = 1:3*length(fc)
+    subplot(3, length(fc), i);
+    xlabel('Frequency');
+    ylabel('Amplitude');
+end

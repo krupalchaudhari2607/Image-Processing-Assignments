@@ -1,0 +1,16 @@
+clc;
+close all;
+clear all;
+
+A = imread("gammma.jpg");
+A = im2double(A)
+imshow(A);
+figure;
+A_g = A.^(1.5);
+imshow(A_g);
+figure;
+A_g = A.^(4);
+imshow(A_g);
+figure;
+A_g = A.^(4.5);
+imshow(A_g);

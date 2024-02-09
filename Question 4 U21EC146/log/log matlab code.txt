@@ -1,0 +1,10 @@
+clc;
+close all;
+clear all;
+
+A = imread("log.jpg");
+A = im2double(A)
+imshow(A);
+figure;
+A_g = log2(1.09+A);
+imshow(A_g);

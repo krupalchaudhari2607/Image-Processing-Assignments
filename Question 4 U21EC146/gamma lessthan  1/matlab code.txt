@@ -1,0 +1,16 @@
+clc;
+close all;
+clear all;
+
+A = imread("mandrill copy.jpg");
+A = im2double(A)
+imshow(A);
+figure;
+A_g = A.^(.65);
+imshow(A_g);
+figure;
+A_g = A.^(.45);
+imshow(A_g);
+figure;
+A_g = A.^(.32);
+imshow(A_g);

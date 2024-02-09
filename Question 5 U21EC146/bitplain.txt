@@ -1,0 +1,18 @@
+clc;
+close all;
+clear all;
+
+A = imread('bitplan.jpg');
+B = zeros(size(A));
+
+for i = 8:-1:1
+    B = bitset(B, i, bitget(A, i));
+    subplot(3, 4, 13 - i); % Adjusting subplot indices based on the loop variable
+    imshow(B);
+    title(['Bit Plan ' num2str(i)]);
+end
+
+B = uint8(B);
+subplot(3, 4, 1);
+imshow(B);
+title('Original Image');

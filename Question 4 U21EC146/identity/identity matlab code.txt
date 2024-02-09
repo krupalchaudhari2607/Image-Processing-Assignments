@@ -1,0 +1,10 @@
+clc;
+close all;
+clear all;
+
+A = imread("negative flower.jpg");
+A = im2double(A);
+imshow(A);
+figure;
+A_g = 0.9.*A +0.05;
+imshow(A_g);
